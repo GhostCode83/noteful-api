@@ -71,9 +71,9 @@ foldersRouter
 
   })
   .delete((req, res, next) => {
-    FoldersService.deleteArticle(
+    FoldersService.deleteFolder(
       req.app.get('db'),
-      req.params.article_id
+      req.params.folder_id
     )
       .then(() => {
         res.status(204).end()
