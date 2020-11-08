@@ -14,6 +14,10 @@ const serializeFolder = folder => ({
 
 foldersRouter
   .route('/')
+  .all((req, res) => {
+    req.headers['access-control-allow-origin'] = 'https://noteful-eta-one.vercel.app/'
+  }
+  )
   .get((req, res, next) => {
     const knexInstance = req.app.get('db')
     FoldersService.getAllFolders(knexInstance)
