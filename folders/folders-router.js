@@ -52,6 +52,7 @@ foldersRouter
 foldersRouter
   .route('/:folder_id')
   .all((req, res, next) => {
+    req.headers['access-control-allow-origin'] = 'https://noteful-eta-one.vercel.app/';
     FoldersService.getById(
       req.app.get('db'),
       req.params.folder_id
