@@ -15,7 +15,7 @@ const serializeFolder = folder => ({
 foldersRouter
   .route('/')
   .all((req, res) => {
-    req.headers['access-control-allow-origin'] = 'https://noteful-eta-one.vercel.app/'
+    req.headers['access-control-allow-origin'] = '*'
   }
   )
   .get((req, res, next) => {
@@ -52,7 +52,7 @@ foldersRouter
 foldersRouter
   .route('/:folder_id')
   .all((req, res, next) => {
-    req.headers['access-control-allow-origin'] = 'https://noteful-eta-one.vercel.app/';
+    req.headers['access-control-allow-origin'] = '*';
     FoldersService.getById(
       req.app.get('db'),
       req.params.folder_id
