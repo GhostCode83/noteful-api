@@ -13,7 +13,7 @@ const serializeFolder = folder => ({
 })
 
 foldersRouter
-  .route('/')
+  .route('/AddFolder')
   .all((req, res) => {
     req.headers['access-control-allow-origin'] = '*'
   }
