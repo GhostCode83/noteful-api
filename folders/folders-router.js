@@ -108,4 +108,24 @@ foldersRouter
       })
       .catch(next)
   })
+
+foldersRouter
+  .route('/AddFolder')
+  .all((req, res, next) => {
+    req.headers['access-control-allow-origin'] = '*';
+    FoldersService.getById(
+      req.app.get('db'),
+      req.params.folder_id
+    )
+      .then(folder => {
+        if (!folder) {
+          return res.status(404).json({
+            error: { message: `Folder doesn't exist` }
+          })
+        }
+        res.folder = folder // save the folder for the next middleware
+        next() // don't forget to call next so the next middleware happens!
+      })
+      .catch(next)
+  })
 module.exports = foldersRouter
